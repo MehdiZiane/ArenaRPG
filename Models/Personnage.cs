@@ -4,6 +4,7 @@ namespace ArenaRPG.Models
 {
     internal class Personnage
     {
+        public const int NiveauMax = 50;
         public Personnage(string nom, int pointsDeVie, int force, int mana) 
         {
             Nom = nom;
@@ -11,10 +12,11 @@ namespace ArenaRPG.Models
             Niveau = 1;
             Force = force;
             Mana = mana;
+            _nombreCree++;
         }
         public Personnage(string nom) : this(nom, 100, 1, 1) { }
         public Personnage() : this(""){ }
-        
+        static Personnage() { Console.WriteLine("affiché le constructeur statique"); }
         private string _nom = string.Empty;
         public string Nom
         {
@@ -50,6 +52,8 @@ namespace ArenaRPG.Models
         }
         public int Niveau { get; private set; }
 
+        
+
         private int _force;
         public int Force
         {
@@ -81,7 +85,18 @@ namespace ArenaRPG.Models
 
         public void MonterDeNiveau()
         {
-            Niveau += 1;
+            if(Niveau < NiveauMax)
+            {
+                Niveau++;
+            }
+            
+        }
+
+        private static int _nombreCree;
+
+        public static int NombreDePersonnages
+        {
+            get { return _nombreCree; }
         }
 
         public static bool operator ==(Personnage p1, Personnage p2)
