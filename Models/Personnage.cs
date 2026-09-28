@@ -1,9 +1,11 @@
-﻿namespace ArenaRPG.Models
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace ArenaRPG.Models
 {
     internal class Personnage
     {
         private string _nom = string.Empty;
-        public string Nom  
+        public string Nom
         {
             get { return _nom; }
             set
@@ -23,11 +25,11 @@
         public int PointsDeVie
         {
             get { return _pointsdevie; }
-            set 
-            { 
+            set
+            {
                 if (value < 0)
                 {
-                    _pointsdevie = 0;   
+                    _pointsdevie = 0;
                 }
                 else
                 {
@@ -43,7 +45,7 @@
             get { return _force; }
             set
             {
-                if(value < 0)
+                if (value < 0)
                 {
                     _force = 0;
                 }
@@ -58,12 +60,46 @@
         public int Mana
         {
             get { return _mana; }
-            set { _mana = value < 0 ?  0 : value; }
+            set { _mana = value < 0 ? 0 : value; }
         }
 
         public bool EstVivant
         {
             get { return PointsDeVie > 0; }
+        }
+
+        public void MonterDeNiveau()
+        {
+            Niveau += 1;
+        }
+
+        public static bool operator ==(Personnage p1, Personnage p2)
+        {
+            return p1.Niveau == p2.Niveau;
+        }
+        public static bool operator !=(Personnage p1, Personnage p2)
+        {
+            return !(p1 == p2);
+        }
+
+        public static bool operator <(Personnage p1, Personnage p2) 
+        {
+            return p1.Niveau < p2.Niveau;
+        }
+        public static bool operator >(Personnage p1, Personnage p2)
+        {
+            return p1.Niveau > p2.Niveau;
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Personnage personnage &&
+                   Niveau == personnage.Niveau;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Niveau);
         }
     }
 }

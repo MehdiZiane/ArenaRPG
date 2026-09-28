@@ -13,5 +13,13 @@ Console.WriteLine($"{perso.Nom} a {perso.PointsDeVie} PV avec {perso.Force} de f
 //perso.Niveau = 5;
 Console.WriteLine($"niveau : {perso.Niveau} toujour vivant : {perso.EstVivant}");
 
+Personnage p3 = new Personnage { Nom = "Aldric" };
+Personnage p4 = new Personnage { Nom = "Elowen" };
+p4.MonterDeNiveau();
+
+Console.WriteLine(p3 == p4);
+Console.WriteLine(p3 < p4);
+Console.WriteLine(p3 > p4);
+Console.WriteLine(p3.Equals(p4));
 
 
