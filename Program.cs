@@ -1,4 +1,5 @@
 ﻿using ArenaRPG.Models;
+using ArenaRPG.Services;
 
 Console.WriteLine("Bienvenue dans l arene");
 
@@ -22,4 +23,15 @@ Console.WriteLine(p3 < p4);
 Console.WriteLine(p3 > p4);
 Console.WriteLine(p3.Equals(p4));
 
+Personnage p5 = new Personnage("Thorin", 150, 12, 20);
+Personnage p6 = new Personnage("Elowen");
+Personnage p7 = new Personnage();
+Console.WriteLine($"{p5.Nom} : {p5.PointsDeVie} PV, niveau {p5.Niveau}");
+Console.WriteLine($"{p6.Nom} : {p6.PointsDeVie} PV, niveau {p6.Niveau}");
+Console.WriteLine($"{p7.Nom} : {p7.PointsDeVie} PV, niveau {p7.Niveau}");
+Console.WriteLine(new Personnage("Test", -10, 5, 5).PointsDeVie);
+
+JournalCombat journal = new JournalCombat("combat.log");
+journal.Ecrire("Aldric attaque Elowen");
+journal.Ecrire("Elowen perd 10 PV");
 

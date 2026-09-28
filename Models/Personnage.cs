@@ -4,6 +4,17 @@ namespace ArenaRPG.Models
 {
     internal class Personnage
     {
+        public Personnage(string nom, int pointsDeVie, int force, int mana) 
+        {
+            Nom = nom;
+            PointsDeVie = pointsDeVie;
+            Niveau = 1;
+            Force = force;
+            Mana = mana;
+        }
+        public Personnage(string nom) : this(nom, 100, 1, 1) { }
+        public Personnage() : this(""){ }
+        
         private string _nom = string.Empty;
         public string Nom
         {
