@@ -65,4 +65,20 @@ Console.WriteLine($"Après attaque Mage : {cible.PointsDeVie} PV");
 archer.Attaquer(cible);
 Console.WriteLine($"Après attaque Archer : {cible.PointsDeVie} PV");
 
-guerrier.EnergieSpeciale
+List<Personnage> equipe = new List<Personnage>();
+equipe.Add(guerrier);
+equipe.Add(mage);
+equipe.Add(archer);
+
+foreach(Personnage p in equipe)
+{
+    p.Attaquer(cible);
+    if (p is Mage m)
+    {
+        Console.WriteLine($"{m.Nom} a attaqué {cible.Nom} avec une magie de type {m.TypeMagie}  il lui reste {cible.PointsDeVie} pv");
+    }
+    else
+    {
+        Console.WriteLine($"{p.Nom} a attaqué {cible.Nom} a {cible.PointsDeVie} pv restant");
+    }
+}

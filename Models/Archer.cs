@@ -10,5 +10,11 @@ namespace ArenaRPG.Models
             : base(nom, pointsDeVie, force, mana)
         { 
         }
+
+        public override void Attaquer(Personnage cible)
+        {
+            base.Attaquer(cible);
+            Console.WriteLine($"{Nom} utilise son arc");
+        }
     }
 }
