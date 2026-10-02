@@ -12,6 +12,7 @@ namespace ArenaRPG.Models
             Niveau = 1;
             Force = force;
             Mana = mana;
+            Inventaire = new Inventaire(5);
             _nombreCree++;
         }
         public Personnage(string nom) : this(nom, 100, 1, 1) { }
@@ -100,9 +101,18 @@ namespace ArenaRPG.Models
             
         }
 
+        public Inventaire Inventaire { get; }
+        public Arme? ArmeEquipee { get; set; }
+
+        public void Equiper(Arme arme)
+        {
+            ArmeEquipee = arme;
+        }
+
         public virtual void Attaquer(Personnage cible)
         {
-            cible.PointsDeVie -= Force;
+            int degats = Force + (ArmeEquipee?.Degat ?? 0);
+            cible.PointsDeVie -= degats;
         }
 
         public abstract string DecrireCompetence();

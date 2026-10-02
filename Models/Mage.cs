@@ -17,13 +17,14 @@ namespace ArenaRPG.Models
 
         public override void Attaquer(Personnage cible)
         {
+            int degats = Force + (ArmeEquipee?.Degat ?? 0);
             if (Mana >= 10)
             {
-                cible.PointsDeVie -= Force + Mana;
+                cible.PointsDeVie -= degats + Mana;
             }
             else
             {
-                cible.PointsDeVie -= Force;
+                cible.PointsDeVie -= degats;
             }
 
         }

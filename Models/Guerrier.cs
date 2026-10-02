@@ -14,7 +14,8 @@ namespace ArenaRPG.Models
 
         public override void Attaquer(Personnage cible)
         {
-            cible.PointsDeVie -= Force * 2;
+            int degats = (Force + (ArmeEquipee?.Degat ?? 0))*2;
+            cible.PointsDeVie -= degats;
         }
 
         public override string DecrireCompetence()

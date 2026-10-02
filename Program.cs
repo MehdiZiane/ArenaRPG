@@ -121,3 +121,20 @@ foreach(ISoignable s in soignables)
 }
 
 Console.WriteLine($"pv apres s etre soigné de {mage.PointsDeVie} {magesoins.PointsDeVie}");
+
+Arme arme = new Arme("épée", 20);
+guerrier.Equiper(arme);
+
+Personnage cibletest = new Mannequin("cibletest", 200, 0, 0);
+guerrier.Attaquer(cibletest);
+Console.WriteLine($"le guerrier a attaqué avec une arme, {cibletest.Nom} a {cibletest.PointsDeVie} pv");
+
+guerrier.Inventaire.Ajouter("Potion de soin");
+guerrier.Inventaire.Ajouter("Parchemin");
+guerrier.Inventaire.Ajouter("Torche");
+guerrier.Inventaire.Ajouter("Corde");
+guerrier.Inventaire.Ajouter("Bouclier");
+bool ajoutReussi = guerrier.Inventaire.Ajouter("Épée supplémentaire");   // capacité dépassée
+Console.WriteLine($"Ajout du 6e objet réussi : {ajoutReussi}");
+
+guerrier.Inventaire.AfficherContenu();
