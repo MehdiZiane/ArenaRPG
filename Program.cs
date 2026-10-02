@@ -1,4 +1,5 @@
-﻿using ArenaRPG.Models;
+﻿using ArenaRPG.Interfaces;
+using ArenaRPG.Models;
 using ArenaRPG.Services;
 using ArenaRPG.Utils;
 
@@ -87,3 +88,36 @@ foreach (Personnage p in equipe)
 {
     Console.WriteLine(p.DecrireCompetence());
 }
+
+guerrier.Attaquer(mage);
+Console.WriteLine($"point de vie du mage {mage.PointsDeVie} pv");
+mage.Soigner(20);
+Console.WriteLine($"le mage c est soigné il a {mage.PointsDeVie} pv");
+
+archer.Empoisonner(5, 3);
+Console.WriteLine($"Empoisonné : {archer.EstEmpoisonne}");
+
+archer.AppliquerPoison();
+Console.WriteLine($"Après tour 1 : {archer.PointsDeVie} PV, toujours empoisonné : {archer.EstEmpoisonne}");
+
+archer.AppliquerPoison();
+Console.WriteLine($"Après tour 2 : {archer.PointsDeVie} PV, toujours empoisonné : {archer.EstEmpoisonne}");
+
+archer.AppliquerPoison();
+Console.WriteLine($"Après tour 3 : {archer.PointsDeVie} PV, toujours empoisonné : {archer.EstEmpoisonne}");
+
+archer.AppliquerPoison();
+Console.WriteLine($"Après tour 4 (ne devrait plus rien faire) : {archer.PointsDeVie} PV");
+
+Mage magesoins = new Mage("tyli", 150, 5, 25);
+
+List<ISoignable> soignables = new List<ISoignable>();
+soignables.Add(mage);
+soignables.Add(magesoins);
+
+foreach(ISoignable s in soignables)
+{
+    s.Soigner(10);
+}
+
+Console.WriteLine($"pv apres s etre soigné de {mage.PointsDeVie} {magesoins.PointsDeVie}");
