@@ -26,5 +26,10 @@ namespace ArenaRPG.Models
             }
 
         }
+        public override string DecrireCompetence()
+        {
+            return $"{Nom} déclanche une boule de feu destructrice";
+        }
+
     }
 }

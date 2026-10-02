@@ -16,5 +16,10 @@ namespace ArenaRPG.Models
         {
             cible.PointsDeVie -= Force * 2;
         }
+
+        public override string DecrireCompetence()
+        {
+            return $"{Nom} dechaine une rage devastatrice";
+        }
     }
 }

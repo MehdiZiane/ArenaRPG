@@ -2,7 +2,7 @@
 
 namespace ArenaRPG.Models
 {
-    internal class Personnage
+    internal abstract class Personnage
     {
         public const int NiveauMax = 50;
         public Personnage(string nom, int pointsDeVie, int force, int mana) 
@@ -104,6 +104,8 @@ namespace ArenaRPG.Models
         {
             cible.PointsDeVie -= Force;
         }
+
+        public abstract string DecrireCompetence();
 
         private static int _nombreCree;
 

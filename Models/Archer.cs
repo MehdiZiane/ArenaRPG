@@ -16,5 +16,10 @@ namespace ArenaRPG.Models
             base.Attaquer(cible);
             Console.WriteLine($"{Nom} utilise son arc");
         }
+
+        public override string DecrireCompetence()
+        {
+            return $"{Nom} lance une fleche de toute sa force";
+        }
     }
 }

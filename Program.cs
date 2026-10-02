@@ -4,7 +4,7 @@ using ArenaRPG.Utils;
 
 Console.WriteLine("Bienvenue dans l arene");
 
-Personnage perso = new Personnage();
+Personnage perso = new Mannequin();
 perso.Nom = "";
 perso.PointsDeVie = 100;
 perso.Force = 4;
@@ -15,8 +15,8 @@ Console.WriteLine($"{perso.Nom} a {perso.PointsDeVie} PV avec {perso.Force} de f
 //perso.Niveau = 5;
 Console.WriteLine($"niveau : {perso.Niveau} toujour vivant : {perso.EstVivant}");
 
-Personnage p2 = new Personnage { Nom = "Aldric" };
-Personnage p3 = new Personnage { Nom = "Elowen" };
+Personnage p2 = new Mannequin { Nom = "Aldric" };
+Personnage p3 = new Mannequin { Nom = "Elowen" };
 p3.MonterDeNiveau();
 
 Console.WriteLine(p2 == p3);
@@ -24,13 +24,13 @@ Console.WriteLine(p2 < p3);
 Console.WriteLine(p2 > p3);
 Console.WriteLine(p2.Equals(p3));
 
-Personnage p4 = new Personnage("Thorin", 150, 12, 20);
-Personnage p5 = new Personnage("Elowen");
-Personnage p6 = new Personnage();
+Personnage p4 = new Mannequin("Thorin", 150, 12, 20);
+Personnage p5 = new Mannequin("Elowen");
+Personnage p6 = new Mannequin();
 Console.WriteLine($"{p4.Nom} : {p4.PointsDeVie} PV, niveau {p4.Niveau}");
 Console.WriteLine($"{p5.Nom} : {p5.PointsDeVie} PV, niveau {p5.Niveau}");
 Console.WriteLine($"{p6.Nom} : {p6.PointsDeVie} PV, niveau {p6.Niveau}");
-Console.WriteLine(new Personnage("Test", -10, 5, 5).PointsDeVie);
+Console.WriteLine(new Mannequin("Test", -10, 5, 5).PointsDeVie);
 
 JournalCombat journal = new JournalCombat("combat.log");
 journal.Ecrire("Aldric attaque Elowen");
@@ -54,7 +54,7 @@ Guerrier guerrier = new Guerrier("Thorin", 150, 20, 5);
 Mage mage = new Mage("Elara", 90, 8, 30);
 Archer archer = new Archer("Lysandre", 100, 15, 10);
 
-Personnage cible = new Personnage("MannequinDEntrainement", 200, 0, 0);
+Personnage cible = new Mannequin("MannequinDEntrainement", 200, 0, 0);
 
 guerrier.Attaquer(cible);
 Console.WriteLine($"Après attaque Guerrier : {cible.PointsDeVie} PV");
@@ -81,4 +81,9 @@ foreach(Personnage p in equipe)
     {
         Console.WriteLine($"{p.Nom} a attaqué {cible.Nom} a {cible.PointsDeVie} pv restant");
     }
+}
+
+foreach (Personnage p in equipe)
+{
+    Console.WriteLine(p.DecrireCompetence());
 }
