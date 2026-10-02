@@ -83,6 +83,14 @@ namespace ArenaRPG.Models
             get { return PointsDeVie > 0; }
         }
 
+        private int _energieSpeciale;
+
+        protected int EnergieSpeciale
+        {
+            get { return _energieSpeciale; }
+            set { _energieSpeciale = value < 0 ? 0 : value; }
+        }
+
         public void MonterDeNiveau()
         {
             if(Niveau < NiveauMax)
@@ -90,6 +98,11 @@ namespace ArenaRPG.Models
                 Niveau++;
             }
             
+        }
+
+        public virtual void Attaquer(Personnage cible)
+        {
+            cible.PointsDeVie -= Force;
         }
 
         private static int _nombreCree;

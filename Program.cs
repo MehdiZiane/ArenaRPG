@@ -49,3 +49,20 @@ for (int i = 0; i < 60; i++)
     p3.MonterDeNiveau();
 }
 Console.WriteLine(p3.Niveau);   // que doit-il afficher ?
+
+Guerrier guerrier = new Guerrier("Thorin", 150, 20, 5);
+Mage mage = new Mage("Elara", 90, 8, 30);
+Archer archer = new Archer("Lysandre", 100, 15, 10);
+
+Personnage cible = new Personnage("MannequinDEntrainement", 200, 0, 0);
+
+guerrier.Attaquer(cible);
+Console.WriteLine($"Après attaque Guerrier : {cible.PointsDeVie} PV");
+
+mage.Attaquer(cible);
+Console.WriteLine($"Après attaque Mage : {cible.PointsDeVie} PV");
+
+archer.Attaquer(cible);
+Console.WriteLine($"Après attaque Archer : {cible.PointsDeVie} PV");
+
+guerrier.EnergieSpeciale
